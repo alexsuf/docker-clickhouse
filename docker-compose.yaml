@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  click:
+    image: alexsuf/clickhouse
+    container_name: clickhouse
+    restart: always
+    environment:
+      TZ: Europe/Moscow
+    ports:
+      - 3333:8123
+      - 9000:9000
+    volumes:
+      - click_db:/var/lib/clickhouse
+      - ./files:/var/lib/clickhouse/user_files 
+volumes:
+  click_db:
+    external: true
